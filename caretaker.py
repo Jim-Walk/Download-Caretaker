@@ -51,15 +51,17 @@ if __name__ == '__main__':
 
     old_files = get_old_files(download_dir)
 
-    print('Found ', len(old_files), 'old files in Downloads. Would you like to proceed?')
+    if len(old_files) != 0:
 
-    choice = input('(Y)es | (A)bort\n').lower()
-    while (choice != 'y') and (choice != 'a'):
+        print('Found ', len(old_files), 'old files in Downloads. Would you like to proceed?')
+
         choice = input('(Y)es | (A)bort\n').lower()
+        while (choice != 'y') and (choice != 'a'):
+            choice = input('(Y)es | (A)bort\n').lower()
 
-    if choice != 'y':
-        exit()
-    else:
-        print('You can (A)bort at any time')
-        for f in old_files:
-            move_or_delete(f)
+        if choice != 'y':
+            exit()
+        else:
+            print('You can (A)bort at any time')
+            for f in old_files:
+                move_or_delete(f)
