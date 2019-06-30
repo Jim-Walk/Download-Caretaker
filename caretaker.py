@@ -40,7 +40,10 @@ def move_or_delete(fil):
     elif choice == 'v':
         shutil.move(download_dir + f, vids_dir + f)
     elif choice == 'r':
-        os.remove(download_dir + f)
+        if os.path.isfile(download_dir + f):
+            os.remove(download_dir + f)
+        else:
+            shutil.rmtree(download_dir + f)
     elif choice == 'i':
         print('Ignored file')
     elif choice == 'a':
